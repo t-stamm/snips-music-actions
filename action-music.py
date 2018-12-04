@@ -18,8 +18,8 @@ def on_connect(client, userdata, flags, rc):
 
     client.subscribe("hermes/hotword/default/detected")
     # Subscribe to intent topic
-    for intent in actions.keys():
-        client.subscribe("hermes/intent/" + intent)
+    client.subscribe("hermes/intent/#")
+        
 
 # The callback for when a PUBLISH message is received from the server.
 def on_message(client, userdata, msg):
@@ -27,7 +27,7 @@ def on_message(client, userdata, msg):
     if msg.topic == 'hermes/hotword/default/detected':
         print("Wakeword detected!")
     else:
-        intent = msg.topic.substring[:msg.topic.lastIndexOf("/")*-1]
+        intent = msg.topic.substring[:msg.topic.lastIndexOf(":")*-1]
 
         try:
             if intent in actions:
