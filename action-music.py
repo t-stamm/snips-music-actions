@@ -28,9 +28,10 @@ def on_message(client, userdata, msg):
         print("Wakeword detected!")
     else:
         intent = msg.topic.substring[:msg.topic.lastIndexOf(":")*-1]
-
+        print("Intent "+intent+" found.")
         try:
             if intent in actions:
+                print("Running intent...")
                 actions[intent](msg.payload)
         except:
             e = sys.exc_info()[0]
