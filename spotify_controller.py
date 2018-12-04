@@ -14,8 +14,8 @@ class SpotifyController:
             #    client_secret='f84b30beb6934037b44decd90c8a792b',
             #    redirect_uri='http://localhost/')
 
-            println "Please open the following url and paste the content from code parameter it returns: "
-            println "https://accounts.spotify.com/authorize?scope=playlist-read-collaborative+playlist-read-private+user-library-read+user-modify-playback-state+user-read-currently-playing+user-read-playback-state&redirect_uri=http%3A%2F%2Flocalhost%2F&response_type=code&client_id=06aa17352eba440db3aa332ca605ae14
+            print("Please open the following url and paste the content from code parameter it returns:\r\n")
+            print("https://accounts.spotify.com/authorize?scope=playlist-read-collaborative+playlist-read-private+user-library-read+user-modify-playback-state+user-read-currently-playing+user-read-playback-state&redirect_uri=http%3A%2F%2Flocalhost%2F&response_type=code&client_id=06aa17352eba440db3aa332ca605ae14\r\n")
 
             self.token = input("Code: ")
 
