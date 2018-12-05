@@ -27,15 +27,15 @@ def on_message(client, userdata, msg):
     if msg.topic == 'hermes/hotword/default/detected':
         print("Wakeword detected!")
     else:
-        intent = msg.topic.substring[:msg.topic.lastIndexOf(":")*-1]
-        print("Intent "+intent+" found.")
         try:
+            intent = msg.topic.substring[:(msg.topic.lastIndexOf(":")-1)*-1]
+            print("Intent "+intent+" found.")
             if intent in actions:
                 print("Running intent...")
                 actions[intent](msg.payload)
         except:
             e = sys.exc_info()[0]
-            print("Error while trying to invoke intent '"+intent+"': "+e)
+            print("Error while trying to invoke intent from topic '"+msg.topic+"': "+e)
 
 
 spotify = SpotifyController()
